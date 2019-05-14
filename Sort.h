@@ -16,8 +16,9 @@ public:
     void merge(int left, int middle, int right);
     void mergeRec(int left, int right);
     void mergeSort();
-    void swap(double* i, double* j);
+    void swap(double* xp, double* yp);
     int getSizeOfArrays();
+    //void printArrays();
 
 private:
     double* quickSortArr;

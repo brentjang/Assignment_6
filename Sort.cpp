@@ -27,11 +27,16 @@ Sort::Sort(string n)
 
 Sort::~Sort()
 {
+    delete[] quickSortArr;
+    delete[] insertionSortArr;
+    delete[] bubbleSortArr;
+    delete[] mergeSortArr;
 }
 
+//helper for QuickSort
 int Sort::partition(double* arr, int low, int high)
 {
-    double pivot = arr[high];
+    double pivot = arr[high]; //pivot is the last element
     int i = (low - 1);
 
     for (int j = low; j <= high- 1; j++)
@@ -119,9 +124,13 @@ void Sort::merge(int left, int middle, int right)
     double tempLeft[n1], tempRight[n2];
 
     for (i = 0; i < n1; i++)
+    {
         tempLeft[i] = mergeSortArr[left + i];
+    }
     for (j = 0; j < n2; j++)
+    {
         tempRight[j] = mergeSortArr[middle + 1 + j];
+    }
 
     i = 0;
     j = 0;
@@ -189,3 +198,11 @@ int Sort::getSizeOfArrays()
 {
     return sizeOfArrays;
 }
+//
+// void Sort::printArrays()
+// {
+//     for(int j = 0; j < sizeOfArrays; j++)
+//     {
+//         cout << quickSortArr[j] << endl;
+//     }
+// }
