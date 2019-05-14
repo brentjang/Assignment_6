@@ -79,7 +79,7 @@ void Sort::bubbleSort()
     {
         for (int j = 0; j < sizeOfArrays-i-1; j++)
         {
-            if (bubbleSortArr[j] > bubbleSortArr[j+1])
+            if (bubbleSortArr[j] > bubbleSortArr[j+1]) //if pair is out of order
             {
                 swap(&bubbleSortArr[j], &bubbleSortArr[j+1]);
             }
@@ -100,7 +100,7 @@ void Sort::insertionSort()
     {
         double key = insertionSortArr[i];
         j = i - 1;
-        while (j >= 0 && insertionSortArr[j] > key)
+        while (j >= 0 && insertionSortArr[j] > key) //slides values until correct index it found
         {
             insertionSortArr[j + 1] = insertionSortArr[j];
             j = j - 1;
@@ -121,8 +121,9 @@ void Sort::merge(int left, int middle, int right)
     int n1 = middle - left + 1;
     int n2 =  right - middle;
 
-    double tempLeft[n1], tempRight[n2];
+    double tempLeft[n1], tempRight[n2]; //make temp arrays
 
+    //fill temp arrays
     for (i = 0; i < n1; i++)
     {
         tempLeft[i] = mergeSortArr[left + i];
@@ -135,9 +136,11 @@ void Sort::merge(int left, int middle, int right)
     i = 0;
     j = 0;
     k = left;
+
+    //compares merging array values to place them in order
     while (i < n1 && j < n2)
     {
-        if (tempLeft[i] <= tempRight[j])
+        if (tempLeft[i] <= tempRight[j]) //smaller values placed first
         {
             mergeSortArr[k] = tempLeft[i];
             i++;
@@ -149,13 +152,13 @@ void Sort::merge(int left, int middle, int right)
         }
         k++;
     }
-    while (i < n1)
+    while (i < n1) //leftover elements in tempLeft
     {
         mergeSortArr[k] = tempLeft[i];
         i++;
         k++;
     }
-    while (j < n2)
+    while (j < n2) //leftover elements in tempRight
     {
         mergeSortArr[k] = tempRight[j];
         j++;
